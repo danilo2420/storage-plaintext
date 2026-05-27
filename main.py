@@ -1,16 +1,15 @@
 from flask import Flask
-import sys
-from dotenv import load_dotenv
-from database import testDatabaseConnection
+from database.database import testDatabaseConnection
+from blueprints.users.users import users_bp
+from blueprints.singers.singers import singers_bp
 
 if not testDatabaseConnection():
     exit()
 
-if "--test" in sys.argv:
-    print("Loading environment variables from .env file")
-    load_dotenv(override=True)
-
 app = Flask(__name__)
+
+app.register_blueprint(users_bp)
+app.register_blueprint(singers_bp)
 
 @app.route("/")
 def test():

@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os
 
 if "--test" in sys.argv:
-    load_dotenv(override=True, dotenv_path="./.env.local")
+    load_dotenv(override=True, dotenv_path=".env.local")
 
 MONGO_USERNAME = os.getenv("MONGO_USERNAME")
 MONGO_PASSWORD = os.getenv("MONGO_PASSWORD")
